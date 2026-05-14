@@ -1,3 +1,37 @@
+// ── Themes ───────────────────────────────────────────────────────
+const themes = {
+  ghee:     { label: "Ghee",      bg: "#fdf9f0", surface: "#f7f2e8", border: "#e8e2d6", navBg: "rgba(253,249,240,0.88)", tagBg: "#ede7d9", tagText: "#3a3530" },
+  pink:     { label: "Pink",      bg: "#fdf4f4", surface: "#f8ecec", border: "#ecdada", navBg: "rgba(253,244,244,0.88)", tagBg: "#f0e0e0", tagText: "#3a2e2e" },
+  warmGray: { label: "Warm Gray", bg: "#f7f7f5", surface: "#efefed", border: "#e2e2de", navBg: "rgba(247,247,245,0.88)", tagBg: "#e5e5e2", tagText: "#333"    },
+  white:    { label: "White",     bg: "#ffffff", surface: "#f7f7f5", border: "#e5e5e2", navBg: "rgba(255,255,255,0.88)", tagBg: "#efefed", tagText: "#333"    },
+};
+
+const themeOrder = ["ghee", "pink", "warmGray", "white"];
+const defaultTheme = "pink"; // ← change this to set a new default
+
+function applyTheme(name) {
+  const t = themes[name];
+  const root = document.documentElement.style;
+  root.setProperty("--bg",       t.bg);
+  root.setProperty("--surface",  t.surface);
+  root.setProperty("--border",   t.border);
+  root.setProperty("--nav-bg",   t.navBg);
+  root.setProperty("--tag-bg",   t.tagBg);
+  root.setProperty("--tag-text", t.tagText);
+  const btn = document.getElementById("theme-btn");
+  if (btn) btn.textContent = t.label;
+  localStorage.setItem("theme", name);
+}
+
+const savedTheme = localStorage.getItem("theme") || defaultTheme;
+applyTheme(savedTheme);
+
+document.getElementById("theme-btn").addEventListener("click", () => {
+  const current = localStorage.getItem("theme") || "ghee";
+  const next = themeOrder[(themeOrder.indexOf(current) + 1) % themeOrder.length];
+  applyTheme(next);
+});
+
 const projects = [
   {
     title: "Diesel.js",
