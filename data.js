@@ -100,11 +100,18 @@ const skills = [
 
 const blogs = [
   {
+    title: "How I made my own backend library like Express / Hono.js in Bun",
+    description: "In this blog I walk through how I built my own backend framework on top of Bun — the design decisions, routing, and what I learned recreating something like Express/Hono from scratch.",
+    date: "Feb 20, 2026",
+    readingTime: "4 min read",
+    link: "https://exvillager.medium.com/how-i-made-my-own-backend-library-like-express-hono-js-in-bun-3ece23daaf55"
+  },
+  {
     title: "Writing my own Trie based HTTP Router taught me more than I expected",
     description: "In this blog I shared how building a Trie based HTTP router for my framework Diesel.js helped me understand routing, middleware design, lazy parameter parsing, and performance focused architecture.",
     date: "Feb 14, 2026",
     readingTime: "3 min read",
-    link: "https://medium.com/@exvillager/writing-my-own-trie-based-http-router-taught-me-more-than-i-expected"
+    link: "https://exvillager.medium.com/writing-my-own-trie-based-http-router-taught-me-more-than-i-expected-5e2dd7560705"
   },
   {
     title: "Understanding How Async JavaScript and the Event Loop Work Together",
