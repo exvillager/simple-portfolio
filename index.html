@@ -1,102 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pradeep Kumar — Portfolio</title>
+  <meta name="description" content="Pradeep Kumar — Software Engineer. Low-level systems, internals, and building things from scratch." />
+  <title>pradeep kumar</title>
   <link rel="stylesheet" href="style.css" />
+  <script>
+    (function () {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme") || "dark"
+      );
+    })();
+  </script>
 </head>
 <body>
+  <main>
 
-  <nav>
-    <span class="nav-name">pradeep.dev</span>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#blogs">Blogs</a></li>
-    </ul>
-    <button id="theme-btn" class="theme-btn">Ghee</button>
-  </nav>
+    <header>
+      <h1>pradeep kumar</h1>
+      <p class="role">software engineer</p>
+      <p class="links">
+        <a href="https://github.com/exvillager" target="_blank" rel="noopener">github</a> ·
+        <a href="https://linkedin.com/in/exvillager" target="_blank" rel="noopener">linkedin</a> ·
+        <a href="https://medium.com/@exvillager" target="_blank" rel="noopener">medium</a> ·
+        <a href="https://drive.google.com/file/d/1oNBHa_u6g1MNEEHU_ZrDJZNQVqOxgE_m/view?usp=sharing" target="_blank" rel="noopener">resume</a> ·
+        <a href="mailto:pradeep@exvillager.xyz">email</a>
+      </p>
+      <button id="theme-btn" class="theme-btn" aria-label="Toggle theme">[ light ]</button>
+    </header>
 
-  <!-- Hero -->
-  <section id="hero">
-    <div class="hero-content">
-      <p class="hero-greeting">Hey, I'm</p>
-      <h1>Pradeep Kumar</h1>
-      <p class="hero-tagline">Software Engineer · Full-Stack · Open Source</p>
-      <div class="hero-links">
-        <a href="https://github.com/exvillager" target="_blank" rel="noopener" class="btn-outline">GitHub</a>
-        <a href="https://linkedin.com/in/exvillager" target="_blank" rel="noopener" class="btn-outline">LinkedIn</a>
-        <a href="https://drive.google.com/file/d/1oNBHa_u6g1MNEEHU_ZrDJZNQVqOxgE_m/view?usp=sharing" target="_blank" rel="noopener" class="btn-outline">Resume</a>
-        <a href="https://medium.com/@exvillager" target="_blank" rel="noopener" class="btn-outline">Medium</a>
-        <a href="mailto:pradeep@exvillager.xyz" class="btn-primary">pradeep@exvillager.xyz</a>
+    <nav>
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#experience">experience</a>
+      <a href="#projects">projects</a>
+      <a href="#blogs">blogs</a>
+    </nav>
+
+    <section id="about">
+      <h2>&gt; about</h2>
+      <p>
+        software engineer interested in low-level systems, internals, and
+        building things from scratch. currently working full-time at
+        <a href="https://docxster.com" target="_blank" rel="noopener">docxster</a>.
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2>&gt; skills</h2>
+      <div id="skills-list"></div>
+    </section>
+
+    <section id="experience">
+      <h2>&gt; experience</h2>
+      <div id="experience-list">
+
+        <div class="entry">
+          <p class="entry-head">software engineer <span class="muted">@ docxster</span> <span class="tag tag-active">full-time</span></p>
+          <p class="when">may 2026 – <span class="present">present</span></p>
+          <p>full stack development — building scalable features, improving performance, and contributing to production-level systems.</p>
+        </div>
+
+        <div class="entry">
+          <p class="entry-head">software developer intern <span class="muted">@ docxster</span> <span class="tag">internship</span></p>
+          <p class="when">nov 2025 – may 2026</p>
+          <p>worked on full stack development, building scalable features, improving performance, and contributing to production-level systems.</p>
+        </div>
+
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About -->
-  <section id="about">
-    <h2 class="section-title">About</h2>
-    <p class="about-text">
-      Software engineer interested in low-level systems, internals, and building things from scratch. Currently working full-time at <a href="https://docxster.com" target="_blank" rel="noopener">Docxster</a> on production systems and scalable applications.
-    </p>
-  </section>
+    <section id="projects">
+      <h2>&gt; projects</h2>
+      <div id="projects-list"></div>
+    </section>
 
-  <!-- Skills -->
-  <section id="skills">
-    <h2 class="section-title">Skills</h2>
-    <div class="skills-grid" id="skills-grid"></div>
-  </section>
+    <section id="blogs">
+      <h2>&gt; blogs</h2>
+      <div id="blogs-list"></div>
+    </section>
 
-  <!-- Experience -->
-  <section id="experience">
-    <h2 class="section-title">Experience</h2>
-    <div class="timeline">
+    <footer>
+      <p>built from scratch · <a href="mailto:pradeep@exvillager.xyz">pradeep@exvillager.xyz</a></p>
+    </footer>
 
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <img src="https://www.docxster.com/_next/static/media/docxster-logo-with-name.c9bf93a9.svg" alt="Docxster" class="company-logo" onerror="this.style.display='none'" />
-          <span class="badge">Full-time</span>
-        </div>
-        <div class="timeline-body">
-          <h3>Software Engineer <span class="at">@ <a href="https://docxster.com" target="_blank" rel="noopener">Docxster</a></span></h3>
-          <p class="duration">May 2026 – Present</p>
-          <p>Full-time software engineer working on full stack development, building scalable features, improving performance, and contributing to production level systems.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <img src="https://www.docxster.com/_next/static/media/docxster-logo-with-name.c9bf93a9.svg" alt="Docxster" class="company-logo" onerror="this.style.display='none'" />
-          <span class="badge badge-intern">Internship</span>
-        </div>
-        <div class="timeline-body">
-          <h3>Software Developer Intern <span class="at">@ <a href="https://docxster.com" target="_blank" rel="noopener">Docxster</a></span></h3>
-          <p class="duration">Nov 2025 – May 2026</p>
-          <p>Worked on full stack development, building scalable features, improving performance, and contributing to production level systems.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects">
-    <h2 class="section-title">Projects</h2>
-    <div class="projects-grid" id="projects-grid"></div>
-  </section>
-
-  <!-- Blogs -->
-  <section id="blogs">
-    <h2 class="section-title">Blogs</h2>
-    <div class="blogs-list" id="blogs-list"></div>
-  </section>
-
-  <footer>
-    <p>Built by Pradeep Kumar · <a href="mailto:pradeep@exvillager.xyz">pradeep@exvillager.xyz</a></p>
-  </footer>
+  </main>
 
   <script src="data.js"></script>
 </body>

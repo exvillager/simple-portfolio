@@ -1,35 +1,19 @@
-// ── Themes ───────────────────────────────────────────────────────
-const themes = {
-  ghee:     { label: "Ghee",      bg: "#fdf9f0", surface: "#f7f2e8", border: "#e8e2d6", navBg: "rgba(253,249,240,0.88)", tagBg: "#ede7d9", tagText: "#3a3530" },
-  pink:     { label: "Pink",      bg: "#fdf4f4", surface: "#f8ecec", border: "#ecdada", navBg: "rgba(253,244,244,0.88)", tagBg: "#f0e0e0", tagText: "#3a2e2e" },
-  warmGray: { label: "Warm Gray", bg: "#f7f7f5", surface: "#efefed", border: "#e2e2de", navBg: "rgba(247,247,245,0.88)", tagBg: "#e5e5e2", tagText: "#333"    },
-  white:    { label: "White",     bg: "#ffffff", surface: "#f7f7f5", border: "#e5e5e2", navBg: "rgba(255,255,255,0.88)", tagBg: "#efefed", tagText: "#333"    },
-};
+// ── Theme toggle (dark default, light optional) ──────────────────
+// The initial theme is applied in <head> before paint to avoid a flash.
+const themeBtn = document.getElementById("theme-btn");
 
-const themeOrder = ["ghee", "pink", "warmGray", "white"];
-const defaultTheme = "pink"; // ← change this to set a new default
-
-function applyTheme(name) {
-  const t = themes[name];
-  const root = document.documentElement.style;
-  root.setProperty("--bg",       t.bg);
-  root.setProperty("--surface",  t.surface);
-  root.setProperty("--border",   t.border);
-  root.setProperty("--nav-bg",   t.navBg);
-  root.setProperty("--tag-bg",   t.tagBg);
-  root.setProperty("--tag-text", t.tagText);
-  const btn = document.getElementById("theme-btn");
-  if (btn) btn.textContent = t.label;
-  localStorage.setItem("theme", name);
+function setThemeLabel() {
+  const current = document.documentElement.getAttribute("data-theme") || "dark";
+  themeBtn.textContent = current === "dark" ? "[ light ]" : "[ dark ]";
 }
+setThemeLabel();
 
-const savedTheme = localStorage.getItem("theme") || defaultTheme;
-applyTheme(savedTheme);
-
-document.getElementById("theme-btn").addEventListener("click", () => {
-  const current = localStorage.getItem("theme") || "ghee";
-  const next = themeOrder[(themeOrder.indexOf(current) + 1) % themeOrder.length];
-  applyTheme(next);
+themeBtn.addEventListener("click", () => {
+  const current = document.documentElement.getAttribute("data-theme") || "dark";
+  const next = current === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+  setThemeLabel();
 });
 
 const projects = [
@@ -139,42 +123,49 @@ const blogs = [
 ];
 
 // ── Render skills ────────────────────────────────────────────────
-const skillsGrid = document.getElementById("skills-grid");
-skills.forEach(({ title, skills: items }) => {
-  skillsGrid.innerHTML += `
-    <div class="skill-group">
-      <h3>${title}</h3>
-      <div class="tags">${items.map(i => `<span>${i}</span>`).join("")}</div>
-    </div>`;
-});
+const skillsList = document.getElementById("skills-list");
+skillsList.innerHTML = skills.map(({ title, skills: items }) => `
+  <p class="skill-group"><span class="label">${title.toLowerCase()}:</span> ${items.join(", ")}</p>
+`).join("");
 
 // ── Render projects ──────────────────────────────────────────────
-const projectsGrid = document.getElementById("projects-grid");
-projects.forEach(({ title, description, techs, githubLink, liveLink, status }) => {
+const projectsList = document.getElementById("projects-list");
+projectsList.innerHTML = projects.map(({ title, description, techs, githubLink, liveLink }) => {
   const links = [
-    githubLink ? `<a href="${githubLink}" target="_blank" rel="noopener">GitHub ↗</a>` : "",
-    liveLink   ? `<a href="${liveLink}"   target="_blank" rel="noopener">Live ↗</a>`   : ""
-  ].filter(Boolean).join("");
+    githubLink ? `<a href="${githubLink}" target="_blank" rel="noopener">github</a>` : "",
+    liveLink   ? `<a href="${liveLink}" target="_blank" rel="noopener">live</a>`     : ""
+  ].filter(Boolean).join(" · ");
 
-  projectsGrid.innerHTML += `
-    <div class="project-card">
-      <div class="project-header">
-        <h3>${title}</h3>
-        <span class="status ${status}">${status}</span>
-      </div>
-      <p>${description}</p>
-      <div class="tags">${techs.map(t => `<span>${t}</span>`).join("")}</div>
-      ${links ? `<div class="project-links">${links}</div>` : ""}
+  return `
+    <div class="project">
+      <p><span class="project-name">${title}</span> — ${description}</p>
+      <p class="techs">${techs.join(", ")}</p>
+      ${links ? `<p class="plinks">${links}</p>` : ""}
     </div>`;
-});
+}).join("");
 
 // ── Render blogs ─────────────────────────────────────────────────
 const blogsList = document.getElementById("blogs-list");
-blogs.forEach(({ title, description, date, readingTime, link }) => {
-  blogsList.innerHTML += `
-    <a class="blog-card" href="${link}" target="_blank" rel="noopener">
-      <div class="blog-meta"><span>${date}</span><span>${readingTime}</span></div>
-      <h3>${title}</h3>
-      <p>${description}</p>
-    </a>`;
+blogsList.innerHTML = blogs.map(({ title, date, readingTime, link }) => `
+  <div class="blog">
+    <p><a href="${link}" target="_blank" rel="noopener">${title}</a></p>
+    <p class="date">${date.toLowerCase()} · ${readingTime}</p>
+  </div>
+`).join("");
+
+// ── Nav scroll-spy (highlight current section) ───────────────────
+const navLinks = [...document.querySelectorAll("nav a")];
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      navLinks.forEach((a) =>
+        a.classList.toggle("active", a.getAttribute("href") === `#${entry.target.id}`)
+      );
+    }
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+
+navLinks.forEach((a) => {
+  const sec = document.querySelector(a.getAttribute("href"));
+  if (sec) spy.observe(sec);
 });
