@@ -100,6 +100,13 @@ const skills = [
 
 const blogs = [
   {
+    title: "How I learned coding — from a small village in Bihar to Bangalore",
+    description: "A personal story of how I learned to code, journeying from a small village in Bihar all the way to building a career in Bangalore.",
+    date: "Jun 22, 2026",
+    readingTime: "5 min read",
+    link: "https://exvillager.medium.com/how-i-learned-coding-from-a-small-village-in-bihar-to-bangalore-225b967cfbcb"
+  },
+  {
     title: "How I made my own backend library like Express / Hono.js in Bun",
     description: "In this blog I walk through how I built my own backend framework on top of Bun — the design decisions, routing, and what I learned recreating something like Express/Hono from scratch.",
     date: "Feb 20, 2026",
