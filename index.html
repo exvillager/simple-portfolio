@@ -5,7 +5,250 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Pradeep Kumar — Software Engineer. Low-level systems, internals, and building things from scratch." />
   <title>pradeep kumar</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+[data-theme="dark"] {
+  --bg:     #101010;
+  --text:   #d6d6d6;
+  --bright: #f2f2f2;
+  --muted:  #888;
+  --link:   #7fd1b9;
+  --line:   #2a2a2a;
+  --green:  #4ade80;
+}
+
+[data-theme="light"] {
+  --bg:     #f4f1ea;
+  --text:   #2a2a2a;
+  --bright: #000;
+  --muted:  #777;
+  --link:   #0a6b4f;
+  --line:   #ddd6c8;
+  --green:  #15803d;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+[data-theme="light"] { color-scheme: light; }
+
+body {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, "Courier New", monospace;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 4rem;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* ── Header ── */
+header {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.avatar {
+  align-self: stretch;
+  height: auto;
+  width: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+  margin-right: 1.5rem;
+  border: 1px solid var(--line);
+}
+
+h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--bright);
+  letter-spacing: -0.01em;
+}
+
+.role {
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.links {
+  font-size: 0.9rem;
+}
+
+.theme-btn {
+  margin-top: 1rem;
+  font: inherit;
+  font-size: 0.85rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0;
+}
+
+.theme-btn:hover {
+  color: var(--bright);
+}
+
+/* ── Nav ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding: 0.85rem 0;
+  margin-bottom: 2.5rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--bright);
+}
+
+/* ── Sections ── */
+section {
+  margin-bottom: 2.5rem;
+  scroll-margin-top: 4rem;
+}
+
+h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--bright);
+  margin-bottom: 0.9rem;
+}
+
+p {
+  margin-bottom: 0.5rem;
+}
+
+.muted { color: var(--muted); }
+
+/* ── Skills ── */
+.skill-group {
+  margin-bottom: 0.6rem;
+}
+
+.skill-group .label {
+  color: var(--muted);
+}
+
+/* ── Experience ── */
+.entry {
+  margin-bottom: 1.4rem;
+}
+
+.entry-head {
+  color: var(--bright);
+  margin-bottom: 0;
+}
+
+.when {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 0 0.4rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.tag-active {
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.tag-active::before {
+  content: "● ";
+  font-size: 0.6em;
+  vertical-align: middle;
+}
+
+.present {
+  color: var(--green);
+}
+
+/* ── Projects ── */
+.project {
+  margin-bottom: 1.2rem;
+}
+
+.project-name {
+  color: var(--bright);
+  font-weight: 700;
+}
+
+.project .techs {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.project .plinks {
+  font-size: 0.85rem;
+}
+
+/* ── Blogs ── */
+.blog {
+  margin-bottom: 1rem;
+}
+
+.blog .date {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.blog a {
+  color: var(--bright);
+}
+
+/* ── Footer ── */
+footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+  </style>
   <script>
     (function () {
       document.documentElement.setAttribute(
@@ -95,6 +338,192 @@
 
   </main>
 
-  <script src="data.js"></script>
+  <script>
+// ── Theme toggle (dark default, light optional) ──────────────────
+// The initial theme is applied in <head> before paint to avoid a flash.
+const themeBtn = document.getElementById("theme-btn");
+
+function setThemeLabel() {
+  const current = document.documentElement.getAttribute("data-theme") || "dark";
+  themeBtn.textContent = current === "dark" ? "[ light ]" : "[ dark ]";
+}
+setThemeLabel();
+
+themeBtn.addEventListener("click", () => {
+  const current = document.documentElement.getAttribute("data-theme") || "dark";
+  const next = current === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+  setThemeLabel();
+});
+
+const projects = [
+  {
+    title: "Diesel.js",
+    description: "A web framework built using Bun.js – similar to Express, but with more advanced features.",
+    techs: ["Bun.js", "TypeScript", "Web Framework"],
+    githubLink: "https://github.com/exvillager/diesel",
+    liveLink: "https://diesel.exvillager.xyz",
+    status: "online"
+  },
+  {
+    title: "nanoserve",
+    description: "A lightweight HTTP router written in Go with built-in middleware support.",
+    techs: ["Go", "HTTP", "Router", "Middleware"],
+    githubLink: "https://github.com/exvillager/nanoserve",
+    liveLink: null,
+    status: "online"
+  },
+  {
+    title: "envy",
+    description: "Securely store and sync .env files across machines using Cloudflare R2 with client-side encryption.",
+    techs: ["Go", "CLI", "Cloudflare R2", "Encryption"],
+    githubLink: "https://github.com/exvillager/envy",
+    liveLink: null,
+    status: "online"
+  },
+  {
+    title: "OpenFile",
+    description: "OpenFile is a secure and encrypted file receiver/sharing service. with help of openfile you can generate a link and share to any anonymous person and that person can send you files anonymously.",
+    techs: ["Bun.js", "React", "SQL"],
+    githubLink: "https://github.com/exvillager/openfile.in",
+    liveLink: "https://openfile.exvillager.xyz",
+    status: "online"
+  },
+  {
+    title: "DevTube",
+    description: "A YouTube-like full-stack app with video uploads, authentication, comments, likes, and more.",
+    techs: ["ReactJS", "ExpressJS", "MongoDB", "TailwindCSS", "JWT", "Multer", "Cloudinary"],
+    githubLink: "https://github.com/exvillager/devtube",
+    liveLink: "https://devtube.exvillager.xyz",
+    status: "online"
+  },
+  {
+    title: "PingFile",
+    description: "A CLI tool for running API requests from JSON/YAML/PKFILE configs. Great for automated testing.",
+    techs: ["Node.js", "CLI", "TypeScript", "YAML", "API Testing"],
+    githubLink: "https://github.com/exvillager/pingfile",
+    liveLink: null,
+    status: "online"
+  },
+  {
+    title: "ex-router",
+    description: "A file-based routing library like Next.js for building modular backends easily.",
+    techs: ["Node.js", "File-based Routing", "NPM Package"],
+    githubLink: "https://github.com/exvillager/ex-router",
+    liveLink: null,
+    status: "online"
+  }
+];
+
+const skills = [
+  {
+    title: "Web & Backend",
+    skills: [
+      "JavaScript", "TypeScript", "React", "Next.js", "Node.js",
+      "Python", "NoSQL", "SQL",
+      "Tailwind CSS", "Git", "Docker", "AWS", "REST APIs", "Go"
+    ]
+  },
+  {
+    title: "Mobile App Dev",
+    skills: [
+      "React Native Expo"
+    ]
+  },
+  {
+    title: "App & System Design",
+    skills: [
+      "Scalability", "API Design", "Caching", "Microservices"
+    ]
+  }
+];
+
+const blogs = [
+  {
+    title: "How I learned coding — from a small village in Bihar to Bangalore",
+    description: "A personal story of how I learned to code, journeying from a small village in Bihar all the way to building a career in Bangalore.",
+    date: "Jun 22, 2026",
+    readingTime: "5 min read",
+    link: "https://exvillager.medium.com/how-i-learned-coding-from-a-small-village-in-bihar-to-bangalore-225b967cfbcb"
+  },
+  {
+    title: "How I made my own backend library like Express / Hono.js in Bun",
+    description: "In this blog I walk through how I built my own backend framework on top of Bun — the design decisions, routing, and what I learned recreating something like Express/Hono from scratch.",
+    date: "Feb 20, 2026",
+    readingTime: "4 min read",
+    link: "https://exvillager.medium.com/how-i-made-my-own-backend-library-like-express-hono-js-in-bun-3ece23daaf55"
+  },
+  {
+    title: "Writing my own Trie based HTTP Router taught me more than I expected",
+    description: "In this blog I shared how building a Trie based HTTP router for my framework Diesel.js helped me understand routing, middleware design, lazy parameter parsing, and performance focused architecture.",
+    date: "Feb 14, 2026",
+    readingTime: "3 min read",
+    link: "https://exvillager.medium.com/writing-my-own-trie-based-http-router-taught-me-more-than-i-expected-5e2dd7560705"
+  },
+  {
+    title: "Understanding How Async JavaScript and the Event Loop Work Together",
+    description: "in this blog i have explained how async nodejs work with event-loop and libuv",
+    date: "Feb 8, 2025",
+    readingTime: "3 min read",
+    link: "https://medium.com/@exvillager/understanding-how-async-javascript-and-the-event-loop-work-together-962f55882cbf"
+  },
+  {
+    title: "Let's understand the difference between process.nextTick() and setImmediate()",
+    description: "in this blog i have explained the difference between process.nextTick() and setImmediate()",
+    date: "Feb 18, 2025",
+    readingTime: "2 min read",
+    link: "https://medium.com/@exvillager/lets-understand-the-difference-between-process-nexttick-and-setimmediate-91c01a603a51"
+  }
+];
+
+// ── Render skills ────────────────────────────────────────────────
+const skillsList = document.getElementById("skills-list");
+skillsList.innerHTML = skills.map(({ title, skills: items }) => `
+  <p class="skill-group"><span class="label">${title.toLowerCase()}:</span> ${items.join(", ")}</p>
+`).join("");
+
+// ── Render projects ──────────────────────────────────────────────
+const projectsList = document.getElementById("projects-list");
+projectsList.innerHTML = projects.map(({ title, description, techs, githubLink, liveLink }) => {
+  const links = [
+    githubLink ? `<a href="${githubLink}" target="_blank" rel="noopener">github</a>` : "",
+    liveLink   ? `<a href="${liveLink}" target="_blank" rel="noopener">live</a>`     : ""
+  ].filter(Boolean).join(" · ");
+
+  return `
+    <div class="project">
+      <p><span class="project-name">${title}</span> — ${description}</p>
+      <p class="techs">${techs.join(", ")}</p>
+      ${links ? `<p class="plinks">${links}</p>` : ""}
+    </div>`;
+}).join("");
+
+// ── Render blogs ─────────────────────────────────────────────────
+const blogsList = document.getElementById("blogs-list");
+blogsList.innerHTML = blogs.map(({ title, date, readingTime, link }) => `
+  <div class="blog">
+    <p><a href="${link}" target="_blank" rel="noopener">${title}</a></p>
+    <p class="date">${date.toLowerCase()} · ${readingTime}</p>
+  </div>
+`).join("");
+
+// ── Nav scroll-spy (highlight current section) ───────────────────
+const navLinks = [...document.querySelectorAll("nav a")];
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      navLinks.forEach((a) =>
+        a.classList.toggle("active", a.getAttribute("href") === `#${entry.target.id}`)
+      );
+    }
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+
+navLinks.forEach((a) => {
+  const sec = document.querySelector(a.getAttribute("href"));
+  if (sec) spy.observe(sec);
+});
+  </script>
 </body>
 </html>
