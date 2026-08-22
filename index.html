@@ -139,7 +139,7 @@ header {
 
 .avatar {
   width: 110px;
-  height: 110px;
+  height: 145px;
   border-radius: 10px;
   object-fit: cover;
   object-position: center top;
@@ -154,9 +154,11 @@ h1 {
   letter-spacing: -0.01em;
 }
 
-.role {
-  color: var(--muted);
-  margin-bottom: 0.75rem;
+.about-blurb {
+  color: var(--text);
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.9rem;
 }
 
 .links {
@@ -191,31 +193,6 @@ h1 {
 
 .theme-btn:hover,
 .copy-btn:hover {
-  color: var(--bright);
-}
-
-/* ── Nav ── */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  padding: 0.85rem 0;
-  margin-bottom: 2.5rem;
-  background: var(--bg);
-  border-bottom: 1px solid var(--line);
-}
-
-nav a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-nav a:hover,
-nav a.active {
   color: var(--bright);
 }
 
@@ -360,6 +337,13 @@ p {
   font-weight: 700;
 }
 
+.repo-desc {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
 .project .techs {
   color: var(--muted);
   font-size: 0.85rem;
@@ -418,14 +402,10 @@ footer {
   }
   .avatar {
     width: 90px;
-    height: 90px;
+    height: 120px;
   }
   main {
     padding: 2.25rem 1.2rem 3rem;
-  }
-  nav {
-    gap: 0.9rem;
-    font-size: 0.85rem;
   }
 }
   </style>
@@ -443,7 +423,11 @@ footer {
     <header>
       <div class="header-text">
         <h1>pradeep kumar</h1>
-        <p class="role">software engineer</p>
+        <p class="about-blurb">
+          full stack software developer interested in low-level systems, internals, and
+          building things from scratch. currently working full-time at
+          <a href="https://docxster.com" target="_blank" rel="noopener">docxster</a>.
+        </p>
         <p class="links">
           <a href="https://github.com/exvillager" target="_blank" rel="noopener" aria-label="GitHub Profile">github</a>
           <span class="sep">·</span>
@@ -463,26 +447,9 @@ footer {
         src="https://res.cloudinary.com/dpgiybkjb/image/upload/v1767528751/IMG20251206081433_2_vufwgw.jpg"
         alt="Pradeep Kumar"
         width="110"
-        height="110"
+        height="145"
       />
     </header>
-
-    <nav aria-label="Page sections">
-      <a href="#about">about</a>
-      <a href="#skills">skills</a>
-      <a href="#experience">experience</a>
-      <a href="#projects">projects</a>
-      <a href="#blogs">blogs</a>
-    </nav>
-
-    <section id="about">
-      <h2>&gt; about</h2>
-      <p>
-        software engineer interested in low-level systems, internals, and
-        building things from scratch. currently working full-time at
-        <a href="https://docxster.com" target="_blank" rel="noopener">docxster</a>.
-      </p>
-    </section>
 
     <section id="skills">
       <h2>&gt; skills</h2>
@@ -524,6 +491,52 @@ footer {
             <span class="skill-pill">Low-level Internals</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="opensource">
+      <h2>&gt; open source</h2>
+      <div id="opensource-list">
+
+        <div class="project">
+          <div class="project-head">
+            <span class="project-name">cpeak</span>
+            <span class="tag tag-active">merged</span>
+          </div>
+          <p class="repo-desc">a Node.js web framework.</p>
+          <p>Cut per-request allocations in the hot path — lower memory pressure, ~3-4% more throughput, 52% lower tail latency.</p>
+          <p class="techs">Node.js · Performance · Memory Optimization</p>
+          <p class="plinks">
+            <a href="https://github.com/Cododev-Technology/cpeak/pull/9" target="_blank" rel="noopener" aria-label="cpeak pull request 9">pull request #9</a>
+          </p>
+        </div>
+
+        <div class="project">
+          <div class="project-head">
+            <span class="project-name">activepieces</span>
+            <span class="tag tag-active">merged</span>
+          </div>
+          <p class="repo-desc">an automation platform.</p>
+          <p>Fixed long names overflowing in the delete dialog and filter badges.</p>
+          <p class="techs">React · TypeScript · UI Fix</p>
+          <p class="plinks">
+            <a href="https://github.com/activepieces/activepieces/pull/13444" target="_blank" rel="noopener" aria-label="activepieces pull request 13444">pull request #13444</a>
+          </p>
+        </div>
+
+        <div class="project">
+          <div class="project-head">
+            <span class="project-name">ergenecore</span>
+            <span class="tag tag-active">merged</span>
+          </div>
+          <p class="repo-desc">a Bun-native HTTP core lib for AsenaJs.</p>
+          <p>Moved middleware building and route setup out of the request path for lower memory usage and faster request handling.</p>
+          <p class="techs">Bun.js · TypeScript · Performance</p>
+          <p class="plinks">
+            <a href="https://github.com/AsenaJs/ergenecore/pull/17" target="_blank" rel="noopener" aria-label="ergenecore pull request 17">pull request #17</a>
+          </p>
+        </div>
+
       </div>
     </section>
 
@@ -775,29 +788,6 @@ if (currentMonthEl) {
   const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
   currentMonthEl.textContent = `${months[now.getMonth()]} ${now.getFullYear()}`;
 }
-
-// ── Nav scroll-spy (highlight current section) ───────────────────
-const navLinks = [...document.querySelectorAll("nav a")];
-const sections = navLinks.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
-
-const spy = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      navLinks.forEach((a) =>
-        a.classList.toggle("active", a.getAttribute("href") === `#${entry.target.id}`)
-      );
-    }
-  });
-}, { rootMargin: "-30% 0px -60% 0px" });
-
-sections.forEach((sec) => spy.observe(sec));
-
-// Handle bottom-of-page scroll edge case for blogs section
-window.addEventListener("scroll", () => {
-  if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 40) {
-    navLinks.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#blogs"));
-  }
-}, { passive: true });
   </script>
 </body>
 </html>
