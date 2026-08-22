@@ -530,7 +530,7 @@ footer {
             <span class="tag tag-active">merged</span>
           </div>
           <p class="repo-desc">a Bun-native HTTP core lib for AsenaJs.</p>
-          <p>Moved middleware building and route setup out of the request path for lower memory usage and faster request handling.</p>
+          <p>Made middleware-chain building and static-path resolution happen once at startup instead of on every request, and pre-serialized error responses — cutting per-request memory and CPU work.</p>
           <p class="techs">Bun.js · TypeScript · Performance</p>
           <p class="plinks">
             <a href="https://github.com/AsenaJs/ergenecore/pull/17" target="_blank" rel="noopener" aria-label="ergenecore pull request 17">pull request #17</a>
