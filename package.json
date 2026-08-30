@@ -13,6 +13,7 @@
   "devDependencies": {
     "diesel-core": "^3.5.1",
     "esbuild": "^0.28.2",
+    "typescript": "^5.9.3",
     "wrangler": "^4.127.1"
   }
 }
