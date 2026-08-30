@@ -1,0 +1,18 @@
+{
+  "name": "simple-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "npm run build && node server.js"
+  },
+  "dependencies": {
+    "starlane-router": "^1.0.2"
+  },
+  "devDependencies": {
+    "diesel-core": "^3.5.1",
+    "esbuild": "^0.28.2",
+    "wrangler": "^4.127.1"
+  }
+}

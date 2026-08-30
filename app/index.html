@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light-pink">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pradeep Kumar — Software Engineer. Low-level systems, internals, and building things from scratch." />
+  <meta name="author" content="Pradeep Kumar" />
+  <meta name="theme-color" content="#fdf0f5" />
+  <link rel="canonical" href="https://exvillager.xyz" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://exvillager.xyz" />
+  <meta property="og:title" content="Pradeep Kumar — Software Engineer" />
+  <meta property="og:description" content="Software engineer interested in low-level systems, internals, and building things from scratch." />
+  <meta property="og:image" content="https://res.cloudinary.com/dpgiybkjb/image/upload/v1767528751/IMG20251206081433_2_vufwgw.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://exvillager.xyz" />
+  <meta name="twitter:title" content="Pradeep Kumar — Software Engineer" />
+  <meta name="twitter:description" content="Software engineer interested in low-level systems, internals, and building things from scratch." />
+  <meta name="twitter:image" content="https://res.cloudinary.com/dpgiybkjb/image/upload/v1767528751/IMG20251206081433_2_vufwgw.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='monospace' font-weight='bold' fill='%234ade80'>&gt;_</text></svg>" type="image/svg+xml" />
+
+  <title>Pradeep Kumar — Software Engineer</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pradeep Kumar",
+    "url": "https://exvillager.xyz",
+    "jobTitle": "Software Engineer",
+    "image": "https://res.cloudinary.com/dpgiybkjb/image/upload/v1767528751/IMG20251206081433_2_vufwgw.jpg",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Docxster",
+      "url": "https://docxster.com"
+    },
+    "sameAs": [
+      "https://github.com/exvillager",
+      "https://linkedin.com/in/exvillager",
+      "https://medium.com/@exvillager"
+    ]
+  }
+  </script>
+  <style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+[data-theme="dark"] {
+  --bg:      #101010;
+  --surface: #171717;
+  --text:    #d6d6d6;
+  --bright:  #f2f2f2;
+  --muted:   #888888;
+  --link:    #7fd1b9;
+  --line:    #2a2a2a;
+  --border:  rgba(255, 255, 255, 0.14);
+  --green:   #4ade80;
+}
+
+[data-theme="light"] {
+  --bg:      #f4f1ea;
+  --surface: #ede8dc;
+  --text:    #2a2a2a;
+  --bright:  #000000;
+  --muted:   #666666;
+  --link:    #0a6b4f;
+  --line:    #ddd6c8;
+  --border:  rgba(0, 0, 0, 0.12);
+  --green:   #15803d;
+}
+
+[data-theme="light-pink"] {
+  --bg:      #fdf0f5;
+  --surface: #fae3ed;
+  --text:    #3c1e2a;
+  --bright:  #1d0912;
+  --muted:   #8a5e70;
+  --link:    #b82d61;
+  --line:    #efc8d7;
+  --border:  rgba(184, 45, 97, 0.18);
+  --green:   #15803d;
+}
+
+[data-theme="pink"] {
+  --bg:      #ff8da1;
+  --surface: #ff7891;
+  --text:    #1e040e;
+  --bright:  #000000;
+  --muted:   #5c142b;
+  --link:    #000000;
+  --line:    rgba(0, 0, 0, 0.16);
+  --border:  rgba(255, 255, 255, 0.45);
+  --green:   #064e3b;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+[data-theme="light"],
+[data-theme="light-pink"],
+[data-theme="pink"] {
+  color-scheme: light;
+}
+
+body {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, "Courier New", monospace;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 4rem;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Header ── */
+header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.header-text {
+  flex: 1;
+}
+
+.avatar {
+  width: 110px;
+  height: 145px;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--bright);
+  letter-spacing: -0.01em;
+}
+
+.about-blurb {
+  color: var(--text);
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.9rem;
+}
+
+.links {
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sep {
+  color: var(--muted);
+  user-select: none;
+}
+
+.navbar {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.theme-btn,
+.copy-btn {
+  font: inherit;
+  font-size: 0.85rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.theme-btn {
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.theme-btn:hover,
+.copy-btn:hover {
+  color: var(--bright);
+}
+
+/* ── Sections ── */
+section {
+  margin-bottom: 2rem;
+  scroll-margin-top: 4.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.35rem 1.4rem;
+  background: var(--surface);
+}
+
+section:last-of-type {
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--bright);
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 0.5rem;
+}
+
+.muted { color: var(--muted); }
+
+/* ── Skills ── */
+.skill-group {
+  margin-bottom: 0.85rem;
+}
+
+.skill-group:last-child {
+  margin-bottom: 0;
+}
+
+.skill-group .label {
+  color: var(--muted);
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.45rem;
+}
+
+.skill-pill {
+  font-size: 0.82rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.08rem 0.45rem;
+  border-radius: 4px;
+}
+
+/* ── Experience ── */
+.entry {
+  margin-bottom: 1.5rem;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.entry-head {
+  color: var(--bright);
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.when {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+}
+
+.entry-bullets {
+  margin-top: 0.35rem;
+}
+
+.entry-point {
+  margin-bottom: 0.3rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.entry-point:last-child {
+  margin-bottom: 0;
+}
+
+.tag {
+  font-size: 0.75rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 0 0.4rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.tag-active {
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.tag-active::before {
+  content: "● ";
+  font-size: 0.6em;
+  vertical-align: middle;
+}
+
+.present {
+  color: var(--green);
+}
+
+/* ── Projects ── */
+.project {
+  margin-bottom: 1.4rem;
+}
+
+.project:last-child {
+  margin-bottom: 0;
+}
+
+.project-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+
+.project-name {
+  color: var(--bright);
+  font-weight: 700;
+}
+
+.repo-desc {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.project .techs {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.project .plinks {
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* ── Blogs ── */
+.blog {
+  margin-bottom: 1.25rem;
+}
+
+.blog:last-child {
+  margin-bottom: 0;
+}
+
+.blog .date {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 0.15rem;
+}
+
+.blog a {
+  color: var(--bright);
+}
+
+.blog-desc {
+  color: var(--text);
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+/* ── Footer ── */
+footer {
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+@media (max-width: 560px) {
+  header {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+  .avatar {
+    width: 90px;
+    height: 120px;
+  }
+  main {
+    padding: 2.25rem 1.2rem 3rem;
+  }
+}
+  </style>
+  <script>
+    (function () {
+      const stored = localStorage.getItem("theme");
+      const theme = stored || "light-pink";
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/router.js"></script>
+</body>
+</html>
