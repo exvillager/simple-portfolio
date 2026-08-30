@@ -8,7 +8,7 @@
     "dev": "npm run build && node server.js"
   },
   "dependencies": {
-    "starlane-router": "^1.0.2"
+    "starlane-router": "^1.0.3"
   },
   "devDependencies": {
     "diesel-core": "^3.5.1",

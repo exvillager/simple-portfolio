@@ -1,22 +1,8 @@
 import { createRouter } from "starlane-router"
+import { render as renderProject } from "./pages/project.js"
 
 const root = document.getElementById("root")
 if (!root) throw new Error("missing #root element")
-
-// placeholder write-ups — fill these in for real, this is just proving the
-// /projects/:slug route works end to end
-const PROJECT_WRITEUPS = {
-  "starlane-router": {
-    title: "starlane-router",
-    techs: "TypeScript · Trie Routing · Zero Dependencies",
-    body: "Placeholder write-up. TODO: what starlane-router is, why it exists, and what building the trie-based matcher taught me.",
-  },
-  diesel: {
-    title: "Diesel.js",
-    techs: "Bun.js · TypeScript · Web Framework",
-    body: "Placeholder write-up. TODO: design decisions behind Diesel.js and lessons from building a backend framework from scratch.",
-  },
-}
 
 const router = createRouter({
   root,
@@ -29,6 +15,7 @@ const router = createRouter({
     "/projects/:slug": {
       url: "/project.html",
       title: "Project — Pradeep Kumar",
+      onRender: (path, result) => renderProject(result.params),
     },
   },
   notFound: {
@@ -87,19 +74,6 @@ function initPageScripts() {
     const now = new Date()
     const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
     currentMonthEl.textContent = `${months[now.getMonth()]} ${now.getFullYear()}`
-  }
-
-  const projectTitleEl = document.getElementById("project-title")
-  if (projectTitleEl) {
-    // createRouter doesn't expose matched :param values yet, so the slug
-    // is read straight from the URL here instead
-    const slug = window.location.pathname.match(/^\/projects\/([^/]+)$/)?.[1]
-    const project = PROJECT_WRITEUPS[slug]
-    projectTitleEl.textContent = project ? project.title : "Project not found"
-    document.getElementById("project-techs").textContent = project?.techs ?? ""
-    document.getElementById("project-body").textContent = project
-      ? project.body
-      : `No write-up yet for "${slug}".`
   }
 }
 
