@@ -3,12 +3,12 @@
 const PROJECT_WRITEUPS = {
   "starlane-router": {
     title: "starlane-router",
-    techs: "TypeScript · Trie Routing · Zero Dependencies",
+    techs: "Frontend · TypeScript · Client Side Router",
     body: "Placeholder write-up. TODO: what starlane-router is, why it exists, and what building the trie-based matcher taught me.",
   },
   diesel: {
     title: "Diesel.js",
-    techs: "Bun.js · TypeScript · Web Framework",
+    techs: "Bun.js · TypeScript · Web Framework · Web Standard",
     body: "Placeholder write-up. TODO: design decisions behind Diesel.js and lessons from building a backend framework from scratch.",
   },
 }
