@@ -1,0 +1,103 @@
+<main>
+  <p class="links"><a href="/">&larr; back home</a></p>
+
+  <header style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+    <div class="header-text">
+      <h1>Diesel.js</h1>
+      <p class="techs" style="margin-top: 0.35rem;">Bun.js · TypeScript · Web Framework · Web Standards</p>
+      <p class="links project-meta">
+        <a href="https://github.com/exvillager/diesel" target="_blank" rel="noopener">github</a>
+        <span class="sep">·</span>
+        <a href="https://diesel.exvillager.xyz" target="_blank" rel="noopener">live</a>
+        <span class="sep">·</span>
+        <a href="https://exvillager.medium.com/how-i-made-my-own-backend-library-like-express-hono-js-in-bun-3ece23daaf55" target="_blank" rel="noopener">original blog on medium</a>
+      </p>
+    </div>
+  </header>
+
+  <section class="project-article">
+    <h2>&gt; How I Built My Own Web Framework in Bun</h2>
+
+    <p>
+      Around June or July 2024, I was making the same repetitive APIs in Express and began wondering how these frameworks actually work under the hood. So I thought, why not build my own lightweight library like Express/Hono from scratch to understand the internals?
+    </p>
+
+    <p>
+      That is how <strong>Diesel.js</strong> started.
+    </p>
+
+    <h3>1. Route Registration & Storage</h3>
+    <p>
+      Initially, I started by implementing standard HTTP helper methods like <code>.get()</code>, <code>.post()</code>, and <code>.delete()</code>. When a user defines a route:
+    </p>
+
+    <pre><code>app.get("/user", userHandler);</code></pre>
+
+    <p>
+      The framework needs to store these route mappings somewhere internally so incoming client requests can be dispatched to the right handler. For the initial version, I used a simple dictionary map:
+    </p>
+
+    <pre><code>diesel.routes[method + path] = handler;</code></pre>
+
+    <h3>2. Handling Incoming Requests</h3>
+    <p>
+      When an HTTP request hits the server via <code>Bun.serve</code>, the framework parses the URL path (e.g. <code>http://localhost:3000/user</code> &rarr; <code>/user</code>), looks up the matching handler from the route table, and invokes it with Bun's native <code>Request</code> object:
+    </p>
+
+    <pre><code>const matchedHandler = diesel.routes[req.method + path];
+if (matchedHandler) {
+  return matchedHandler(req);
+}</code></pre>
+
+    <p>
+      After building this first prototype, the core request-response cycle of frameworks like Express and Fastify became much clearer. But the framework still lacked two critical features: <strong>middleware pipelines</strong> and <strong>dynamic route matching</strong>.
+    </p>
+
+    <h3>3. Adding Middleware Support</h3>
+    <p>
+      Middleware functions are simply hooks that execute before the main route handler. In Diesel, I broke middleware down into two types:
+    </p>
+
+    <ul>
+      <li><strong>Global Middleware:</strong> A list of middleware functions that execute on every incoming request, regardless of whether a route handler matches.</li>
+      <li><strong>Route-Specific Middleware:</strong> Middleware that only runs for specific route paths (e.g., authentication on <code>/user</code>).</li>
+    </ul>
+
+    <pre><code>app.useMiddleware("/user", (req) =&gt; {
+  console.log("Running route-specific middleware on /user");
+});</code></pre>
+
+    <p>
+      To implement this:
+    </p>
+    <ul>
+      <li>Stored global middlewares in an array (<code>[]</code>).</li>
+      <li>Stored route-specific middlewares in a <code>Map</code> keyed by route path.</li>
+      <li>In <code>handleRequest</code>, iterate and execute all global middlewares first, then retrieve and execute route-specific middlewares via <code>diesel.routeMiddleware(path)</code>, and finally call the route handler.</li>
+    </ul>
+
+    <h3>4. Upgrading to a Trie-Based Router</h3>
+    <p>
+      A plain JavaScript object works for exact static routes like <code>/user/login</code>, but completely breaks down when handling:
+    </p>
+    <ul>
+      <li><strong>Dynamic route parameters:</strong> <code>/user/:id</code> (where <code>:id</code> can be any value).</li>
+      <li><strong>Wildcard routes:</strong> <code>/assets/*</code> (matching any nested path).</li>
+    </ul>
+
+    <p>
+      To solve this, I designed and built a custom <strong>Trie-based HTTP router</strong> capable of fast prefix matching, parameter extraction, and wildcard handling.
+    </p>
+
+    <p>
+      &rarr; Read the full deep dive on building the router here: <a href="https://exvillager.medium.com/writing-my-own-trie-based-http-router-taught-me-more-than-i-expected-5e2dd7560705" target="_blank" rel="noopener">Writing my own Trie based HTTP Router taught me more than I expected</a>.
+    </p>
+
+    <h3>Links & Code</h3>
+    <p class="links" style="margin-top: 0.5rem;">
+      <a href="https://github.com/exvillager/diesel" target="_blank" rel="noopener">GitHub: exvillager/diesel</a>
+      <span class="sep">·</span>
+      <a href="https://diesel.exvillager.xyz" target="_blank" rel="noopener">Official Documentation & Live Demo</a>
+    </p>
+  </section>
+</main>

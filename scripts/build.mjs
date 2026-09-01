@@ -17,9 +17,20 @@ await build({
   outfile: path.join(outDir, "router.js"),
 })
 
-const htmlFiles = readdirSync(appDir).filter((file) => file.endsWith(".html"))
-for (const file of htmlFiles) {
-  writeFileSync(path.join(outDir, file), readFileSync(path.join(appDir, file)))
+function copyHtmlFiles(srcDir, destDir) {
+  const entries = readdirSync(srcDir, { withFileTypes: true })
+  for (const entry of entries) {
+    const srcPath = path.join(srcDir, entry.name)
+    const destPath = path.join(destDir, entry.name)
+    if (entry.isDirectory()) {
+      mkdirSync(destPath, { recursive: true })
+      copyHtmlFiles(srcPath, destPath)
+    } else if (entry.isFile() && entry.name.endsWith(".html")) {
+      writeFileSync(destPath, readFileSync(srcPath))
+    }
+  }
 }
+
+copyHtmlFiles(appDir, outDir)
 
 console.log("Built app/ -> build/")

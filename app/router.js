@@ -12,6 +12,11 @@ const router = createRouter({
       title: "Pradeep Kumar — Software Engineer",
       description: "Software engineer interested in low-level systems, internals, and building things from scratch.",
     },
+    "/projects/diesel": {
+      url: "/projects/diesel.html",
+      title: "Diesel.js — Pradeep Kumar",
+      description: "How I built my own backend framework in Bun.",
+    },
     "/projects/:slug": {
       url: "/project.html",
       title: "Project — Pradeep Kumar",
