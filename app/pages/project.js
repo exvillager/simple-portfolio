@@ -1,11 +1,6 @@
 // placeholder write-ups — fill these in for real, this is just proving the
 // /projects/:slug route works end to end
 const PROJECT_WRITEUPS = {
-  "starlane-router": {
-    title: "starlane-router",
-    techs: "Frontend · TypeScript · Client Side Router",
-    body: "Placeholder write-up. TODO: what starlane-router is, why it exists, and what building the trie-based matcher taught me.",
-  },
   diesel: {
     title: "Diesel.js",
     techs: "Bun.js · TypeScript · Web Framework · Web Standard",
