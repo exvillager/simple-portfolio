@@ -70,6 +70,9 @@
     color: var(--ink);
   }
 
+  .pr {
+    margin: 0 0 0.4rem;
+  }
   .meta {
     font-style: italic;
   }
@@ -134,17 +137,10 @@
 
 <h2>open source</h2>
 
-<h3>cpeak</h3>
-<p>a Node.js web framework. cut per-request allocations in the hot path — lower memory pressure, ~3-4% more throughput, 52% lower tail latency.</p>
-<p><a href="https://github.com/Cododev-Technology/cpeak/pull/9">pull request #9</a> — merged</p>
-
-<h3>activepieces</h3>
-<p>an automation platform. fixed long names overflowing in the delete dialog and filter badges.</p>
-<p><a href="https://github.com/activepieces/activepieces/pull/13444">pull request #13444</a> — merged</p>
-
-<h3>ergenecore</h3>
-<p>a Bun-native HTTP core lib for AsenaJs. moved middleware-chain building and static-path resolution to startup instead of every request, and pre-serialized error responses.</p>
-<p><a href="https://github.com/AsenaJs/ergenecore/pull/17">pull request #17</a> — merged</p>
+<p class="pr"><a href="https://github.com/Cododev-Technology/cpeak/pull/9">pull request #9</a> - cut per-request allocations in the hot path — lower memory pressure, ~3-4% more throughput, 52% lower tail latency.</p>
+<p class="pr"><a href="https://github.com/Cododev-Technology/cpeak/pull/14">pull request #14</a> - cached static routes in a per-method map, so static lookups skip the tree walk — 7-13× faster route matching.</p>
+<p class="pr"><a href="https://github.com/activepieces/activepieces/pull/13444">pull request #13444</a> - fixed long names overflowing in the delete dialog and filter badges.</p>
+<p class="pr"><a href="https://github.com/AsenaJs/ergenecore/pull/17">pull request #17</a> - moved middleware-chain building and static-path resolution to startup instead of every request, and pre-serialized error responses.</p>
 
 <h2>projects</h2>
 
