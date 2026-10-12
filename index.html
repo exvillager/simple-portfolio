@@ -375,6 +375,14 @@ p {
   margin-top: 0.25rem;
 }
 
+#opensource-list .project {
+  margin-bottom: 0.5rem;
+}
+
+#opensource-list .project:last-child {
+  margin-bottom: 0;
+}
+
 /* ── Blogs ── */
 .blog {
   margin-bottom: 1.25rem;
@@ -519,30 +527,19 @@ footer {
       <div id="opensource-list">
 
         <div class="project">
-          <p class="repo-desc"><span class="project-name">cpeak</span> - a Node.js web framework.</p>
-          <p>Cut per-request allocations in the hot path — lower memory pressure, ~3-4% more throughput, 52% lower tail latency.</p>
-          <p class="techs">Node.js · Performance · Memory Optimization</p>
-          <p class="plinks">
-            <a href="https://github.com/Cododev-Technology/cpeak/pull/9" target="_blank" rel="noopener" aria-label="cpeak pull request 9">pull request #9</a> - <span class="tag tag-active">merged</span>
-          </p>
+          <p><a href="https://github.com/Cododev-Technology/cpeak/pull/9" target="_blank" rel="noopener" aria-label="pull request 9">pull request #9</a> - Cut per-request allocations in the hot path — lower memory pressure, ~3-4% more throughput, 52% lower tail latency.</p>
         </div>
 
         <div class="project">
-          <p class="repo-desc"><span class="project-name">activepieces</span> - an automation platform.</p>
-          <p>Fixed long names overflowing in the delete dialog and filter badges.</p>
-          <p class="techs">React · TypeScript · UI Fix</p>
-          <p class="plinks">
-            <a href="https://github.com/activepieces/activepieces/pull/13444" target="_blank" rel="noopener" aria-label="activepieces pull request 13444">pull request #13444</a> - <span class="tag tag-active">merged</span>
-          </p>
+          <p><a href="https://github.com/Cododev-Technology/cpeak/pull/14" target="_blank" rel="noopener" aria-label="pull request 14">pull request #14</a> - Cached static routes in a per-method map, so static lookups skip the tree walk — 7-13× faster route matching.</p>
         </div>
 
         <div class="project">
-          <p class="repo-desc"><span class="project-name">ergenecore</span> - a Bun-native HTTP core lib for AsenaJs.</p>
-          <p>Made middleware-chain building and static-path resolution happen once at startup instead of on every request, and pre-serialized error responses — cutting per-request memory and CPU work.</p>
-          <p class="techs">Bun.js · TypeScript · Performance</p>
-          <p class="plinks">
-            <a href="https://github.com/AsenaJs/ergenecore/pull/17" target="_blank" rel="noopener" aria-label="ergenecore pull request 17">pull request #17</a> - <span class="tag tag-active">merged</span>
-          </p>
+          <p><a href="https://github.com/activepieces/activepieces/pull/13444" target="_blank" rel="noopener" aria-label="pull request 13444">pull request #13444</a> - Fixed long names overflowing in the delete dialog and filter badges.</p>
+        </div>
+
+        <div class="project">
+          <p><a href="https://github.com/AsenaJs/ergenecore/pull/17" target="_blank" rel="noopener" aria-label="pull request 17">pull request #17</a> - Made middleware-chain building and static-path resolution happen once at startup instead of on every request, and pre-serialized error responses — cutting per-request memory and CPU work.</p>
         </div>
 
       </div>
