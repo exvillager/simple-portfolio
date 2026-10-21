@@ -7,119 +7,139 @@
 <meta name="description" content="pradeep kumar — full stack software developer.">
 <style>
   :root {
-    --ink: #e6e6e6;
-    --bg: #121212;
+    --ink: #111;
+    --muted: #666;
+    --line: #d4d4d4;
+    --bg: #fff;
+    --hover: #fafafa;
   }
+
+  * { box-sizing: border-box; }
 
   body {
     background: var(--bg);
     color: var(--ink);
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.6;
-    max-width: 40rem;
+    max-width: 80rem;
     margin: 0 auto;
-    padding: 3rem 1.25rem;
+    padding: 2.5rem 1.25rem;
   }
 
-  img {
-    width: 120px;
-    height: auto;
-    display: block;
-  }
+  img { width: 96px; height: auto; display: block; border-radius: 6px; }
 
-  header {
+  .grid {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    align-items: flex-start;
-    margin-bottom: 2.5rem;
+    align-items: stretch;
+    border: 1px solid var(--ink);
+    border-radius: 8px;
+    overflow: hidden;
   }
 
-  .bio {
-    flex: 1 1 18rem;
+  .col {
+    flex: 1 1 0;
+    min-width: 0;
+    border-right: 1px solid var(--line);
   }
+  .col:last-child { border-right: 0; }
 
-  h1 {
-    font-size: 1.6rem;
-    margin: 0 0 0.25rem;
+  .cell {
+    padding: 1.5rem 1.75rem 1.75rem;
+    border-bottom: 1px solid var(--line);
   }
+  .cell:last-child { border-bottom: 0; }
 
+  h1 { font-size: 1.5rem; margin: 0 0 0.4rem; line-height: 1.2; }
   h2 {
-    font-size: 1.1rem;
-    margin: 2.5rem 0 0.75rem;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 0.25rem;
+    font: 600 0.75rem/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin: 0 0 1.1rem;
   }
+  h3 { font-size: 1rem; margin: 1.1rem 0 0.15rem; }
+  h3:first-of-type { margin-top: 0; }
+  p { margin: 0 0 0.65rem; }
+  ul { margin: 0 0 0.6rem; padding-left: 1.1rem; }
+  li { margin-bottom: 0.5rem; }
+  a { color: var(--ink); text-decoration-color: #aaa; text-underline-offset: 3px; overflow-wrap: anywhere; }
+  a:hover { text-decoration-color: var(--ink); }
+  .meta { font-style: italic; color: var(--muted); font-size: 0.9rem; }
+  .about { display: flex; gap: 1.1rem; align-items: flex-start; margin-bottom: 0.75rem; }
+  .about p { margin: 0; }
 
-  h3 {
-    font-size: 1rem;
-    margin: 1.5rem 0 0.25rem;
-  }
+  footer { margin-top: 1.25rem; color: var(--muted); font-size: 0.9rem; }
+  footer p { margin: 0; }
 
-  p {
-    margin: 0 0 0.75rem;
-  }
-
-  ul {
-    margin: 0 0 0.75rem;
-    padding-left: 1.25rem;
-  }
-
-  a {
-    color: var(--ink);
-  }
-
-  .pr {
-    margin: 0 0 0.4rem;
-  }
-  .meta {
-    font-style: italic;
-  }
-
-  footer {
-    margin-top: 3rem;
-    border-top: 1px solid var(--ink);
-    padding-top: 0.75rem;
+  @media (max-width: 55rem) {
+    .grid { flex-direction: column; }
+    .col { display: contents; }
+    .cell { border-bottom: 1px solid var(--line); }
+    .cell:last-child { border-bottom: 1px solid var(--line); }
+    #about { order: 1; }
+    #experience { order: 2; }
+    #projects { order: 3; }
+    #open-source { order: 4; }
+    #skills { order: 5; }
+    #blogs { order: 6; border-bottom: 0; }
   }
 </style>
 </head>
 <body>
 
-<header>
+<main class="grid">
 
-  <div class="bio">
-    <h1>pradeep kumar</h1>
-    <p>
-      full stack software developer interested in low-level systems, internals, and building
-      things from scratch. currently working full-time at
-      <a href="https://docxster.com">docxster</a>.
-    </p>
+  <div class="col">
+  <section class="cell" id="about">
+    <h2>about</h2>
+    <div class="about">
+      <div>
+        <h1>pradeep kumar</h1>
+        <p>
+          full stack software developer interested in low-level systems, internals, and building
+          things from scratch. currently working full-time at
+          <a href="https://docxster.com">docxster</a>.
+        </p>
+      </div>
+      <img src="/avatar-240.webp"
+           srcset="/avatar-240.webp 240w, /avatar-360.webp 360w, /avatar-480.webp 480w"
+           sizes="120px"
+           alt="pradeep kumar" width="120" height="160"
+           fetchpriority="high" decoding="async">
+    </div>
     <p>
       <a href="https://github.com/exvillager">github</a> ·
       <a href="https://linkedin.com/in/exvillager">linkedin</a> ·
       <a href="https://medium.com/@exvillager">medium</a> ·
       <a href="https://resume.exvillager.xyz">resume</a> ·
-      <a href="mailto:pradeep@exvillager.xyz">pradeep@exvillager.xyz</a>
+      <a href="mailto:pradeep@exvillager.xyz">email</a>
     </p>
-  </div>
+  </section>
 
-  <img src="/avatar-240.webp"
-       srcset="/avatar-240.webp 240w, /avatar-360.webp 360w, /avatar-480.webp 480w"
-       sizes="120px"
-       alt="pradeep kumar" width="120" height="160"
-       fetchpriority="high" decoding="async">
-
-</header>
-
-<h2>skills</h2>
-<p><strong>web &amp; backend:</strong> Go, TypeScript, JavaScript, Node.js, Bun.js, Python, React, Next.js, SQL, MongoDB, REST APIs, Docker, AWS, Git, Tailwind CSS</p>
+  <section class="cell" id="skills">
+    <h2>skills</h2>
+    <p><strong>web &amp; backend:</strong> Go, TypeScript, JavaScript, Node.js, Bun.js, Python, React, Next.js, SQL, MongoDB, REST APIs, Docker, AWS, Git, Tailwind CSS</p>
 <p><strong>mobile:</strong> React Native, Expo</p>
 <p><strong>app &amp; system design:</strong> scalability, API design, caching, microservices, low-level internals</p>
+  </section>
 
-<h2>experience</h2>
+  <section class="cell" id="blogs">
+    <h2>blogs</h2>
+    <ul>
+  <li><a href="https://exvillager.medium.com/how-i-learned-coding-from-a-small-village-in-bihar-to-bangalore-225b967cfbcb">How I learned coding — from a small village in Bihar to Bangalore</a> · jun 22, 2026</li>
+  <li><a href="https://exvillager.medium.com/how-i-made-my-own-backend-library-like-express-hono-js-in-bun-3ece23daaf55">How I made my own backend library like Express / Hono.js in Bun</a> · feb 20, 2026</li>
+  <li><a href="https://exvillager.medium.com/writing-my-own-trie-based-http-router-taught-me-more-than-i-expected-5e2dd7560705">Writing my own Trie based HTTP Router taught me more than I expected</a> · feb 14, 2026</li>
+  <li><a href="https://medium.com/@exvillager/understanding-how-async-javascript-and-the-event-loop-work-together-962f55882cbf">Understanding How Async JavaScript and the Event Loop Work Together</a> · feb 8, 2025</li>
+  <li><a href="https://medium.com/@exvillager/lets-understand-the-difference-between-process-nexttick-and-setimmediate-91c01a603a51">Let's understand the difference between process.nextTick() and setImmediate()</a> · feb 18, 2025</li>
+</ul>
+  </section>
+  </div>
 
-<h3>full stack developer — docxster</h3>
+  <div class="col">
+  <section class="cell" id="experience">
+    <h2>experience</h2>
+    <h3>full stack developer — docxster</h3>
 <p class="meta">may 2026 – present · full-time</p>
 <ul>
   <li>optimizing backend services using Node.js, improving API response times.</li>
@@ -134,17 +154,21 @@
   <li>integrated Tally API into our system for automation usage.</li>
   <li>fixed critical UI/UX issues, improving application stability and user experience.</li>
 </ul>
+  </section>
 
-<h2>open source</h2>
-
-<p class="pr"><a href="https://github.com/Cododev-Technology/cpeak/pull/9">pull request #9</a> - cut per-request allocations in the hot path — lower memory pressure, ~3-4% more throughput, 52% lower tail latency.</p>
+  <section class="cell" id="open-source">
+    <h2>open source</h2>
+    <p class="pr"><a href="https://github.com/Cododev-Technology/cpeak/pull/9">pull request #9</a> - cut per-request allocations in the hot path — lower memory pressure, ~3-4% more throughput, 52% lower tail latency.</p>
 <p class="pr"><a href="https://github.com/Cododev-Technology/cpeak/pull/14">pull request #14</a> - cached static routes in a per-method map, so static lookups skip the tree walk — 7-13× faster route matching.</p>
 <p class="pr"><a href="https://github.com/activepieces/activepieces/pull/13444">pull request #13444</a> - fixed long names overflowing in the delete dialog and filter badges.</p>
 <p class="pr"><a href="https://github.com/AsenaJs/ergenecore/pull/17">pull request #17</a> - moved middleware-chain building and static-path resolution to startup instead of every request, and pre-serialized error responses.</p>
+  </section>
+  </div>
 
-<h2>projects</h2>
-
-<h3>Diesel.js</h3>
+  <div class="col">
+  <section class="cell" id="projects">
+    <h2>projects</h2>
+    <h3>Diesel.js</h3>
 <p>a simple and lightweight web framework built on Web Standards. Bun.js, TypeScript.</p>
 <p><a href="https://github.com/exvillager/diesel">github</a> · <a href="https://diesel.exvillager.xyz">live</a></p>
 
@@ -175,15 +199,10 @@
 <h3>envy</h3>
 <p>securely store and sync .env files across machines using Cloudflare R2. Go, CLI, encryption.</p>
 <p><a href="https://github.com/exvillager/envy">github</a></p>
+  </section>
+  </div>
 
-<h2>writing</h2>
-<ul>
-  <li><a href="https://exvillager.medium.com/how-i-learned-coding-from-a-small-village-in-bihar-to-bangalore-225b967cfbcb">How I learned coding — from a small village in Bihar to Bangalore</a> · jun 22, 2026</li>
-  <li><a href="https://exvillager.medium.com/how-i-made-my-own-backend-library-like-express-hono-js-in-bun-3ece23daaf55">How I made my own backend library like Express / Hono.js in Bun</a> · feb 20, 2026</li>
-  <li><a href="https://exvillager.medium.com/writing-my-own-trie-based-http-router-taught-me-more-than-i-expected-5e2dd7560705">Writing my own Trie based HTTP Router taught me more than I expected</a> · feb 14, 2026</li>
-  <li><a href="https://medium.com/@exvillager/understanding-how-async-javascript-and-the-event-loop-work-together-962f55882cbf">Understanding How Async JavaScript and the Event Loop Work Together</a> · feb 8, 2025</li>
-  <li><a href="https://medium.com/@exvillager/lets-understand-the-difference-between-process-nexttick-and-setimmediate-91c01a603a51">Let's understand the difference between process.nextTick() and setImmediate()</a> · feb 18, 2025</li>
-</ul>
+</main>
 
 <footer>
   <p>built from scratch · <a href="mailto:pradeep@exvillager.xyz">pradeep@exvillager.xyz</a></p>
