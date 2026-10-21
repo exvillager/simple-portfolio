@@ -12,6 +12,9 @@
     --line: #d4d4d4;
     --bg: #fff;
     --hover: #fafafa;
+    --link: #1a56db;
+    --link-line: #9db8f0;
+    --green: #15803d;
   }
 
   * { box-sizing: border-box; }
@@ -63,9 +66,10 @@
   p { margin: 0 0 0.65rem; }
   ul { margin: 0 0 0.6rem; padding-left: 1.1rem; }
   li { margin-bottom: 0.5rem; }
-  a { color: var(--ink); text-decoration-color: #aaa; text-underline-offset: 3px; overflow-wrap: anywhere; }
-  a:hover { text-decoration-color: var(--ink); }
+  a { color: var(--link); text-decoration-color: var(--link-line); text-underline-offset: 3px; overflow-wrap: anywhere; }
+  a:hover { text-decoration-color: var(--link); }
   .meta { font-style: italic; color: var(--muted); font-size: 0.9rem; }
+  .meta.current { color: var(--green); }
   .about { display: flex; gap: 1.1rem; align-items: flex-start; margin-bottom: 0.75rem; }
   .about p { margin: 0; }
 
@@ -140,7 +144,7 @@
   <section class="cell" id="experience">
     <h2>experience</h2>
     <h3>full stack developer — docxster</h3>
-<p class="meta">may 2026 – present · full-time</p>
+<p class="meta current">may 2026 – present · full-time</p>
 <ul>
   <li>optimizing backend services using Node.js, improving API response times.</li>
   <li>integrated Descartes NetCHB into our system for automation usage.</li>
