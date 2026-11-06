@@ -17,12 +17,27 @@
   :root {
     --ink: #121212;
     --muted: #6b6b6b;
-    --line: #e4e4e4;
-    --bg: #ffffff;
+    --faint: #8f8f8f;
+    --line: #e8e8e8;
+    --bg: #fdfdfc;
+    --card: #ffffff;
     --accent: #111;
+    --tag-bg: #f2f2f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e8e8e6;
+      --muted: #9a9a96;
+      --faint: #7c7c78;
+      --line: #262625;
+      --bg: #0e0e0d;
+      --card: #161615;
+      --accent: #e8e8e6;
+      --tag-bg: #1d1d1b;
+    }
   }
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--bg);
@@ -30,47 +45,65 @@
     font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
     font-size: 14px;
     line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
   }
   .wrap { max-width: 46rem; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
 
   /* header */
-  header { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1rem; }
-  header img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; display: block; }
-  header h1 { font-size: 1.25rem; margin: 0; letter-spacing: -0.01em; }
-  header .role { color: var(--muted); font-size: 0.85rem; margin-top: 0.15rem; }
+  header { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.1rem; }
+  header img {
+    width: 64px; height: 64px; border-radius: 50%; object-fit: cover; display: block;
+    border: 1px solid var(--line); transition: transform 0.25s ease;
+  }
+  header a:hover img { transform: scale(1.05); }
+  header h1 { font-size: 1.3rem; margin: 0; letter-spacing: -0.01em; }
+  header .role { color: var(--muted); font-size: 0.85rem; margin-top: 0.2rem; }
 
   .intro { color: var(--ink); margin: 0 0 1rem; max-width: 40rem; }
-  .links { font-size: 0.85rem; color: var(--muted); margin: 0 0 2.5rem; }
-  .links a { color: var(--ink); }
+  .links { font-size: 0.85rem; color: var(--muted); margin: 0 0 2.75rem; display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; }
+  .links a { color: var(--ink); border-bottom: 0; }
+  .links a:hover { color: var(--faint); }
 
   /* sections */
-  section { margin-bottom: 2.5rem; }
+  section { margin-bottom: 2.75rem; }
   h2 {
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.18em;
     color: var(--muted);
     font-weight: 600;
-    margin: 0 0 1.25rem;
-    padding-bottom: 0.4rem;
+    margin: 0 0 1.4rem;
+    padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
+  h2::before { content: "#"; color: var(--faint); font-weight: 400; }
 
-  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid #bbb; }
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); transition: border-color 0.15s ease, color 0.15s ease; }
   a:hover { border-bottom-color: var(--ink); }
   a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
   /* entry: label on left, body on right */
-  .entry { display: grid; grid-template-columns: 8rem 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  .entry { display: grid; grid-template-columns: 8rem 1fr; gap: 1rem; margin-bottom: 1.6rem; }
   .entry:last-child { margin-bottom: 0; }
   .entry .when { color: var(--muted); font-size: 0.8rem; padding-top: 0.1rem; }
-  .entry h3 { font-size: 0.95rem; margin: 0 0 0.25rem; font-weight: 600; }
+  .entry h3 { font-size: 0.95rem; margin: 0 0 0.3rem; font-weight: 600; }
   .entry p { margin: 0 0 0.4rem; }
-  .entry ul { margin: 0.35rem 0 0; padding-left: 1.1rem; }
+  .entry ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }
   .entry li { margin-bottom: 0.3rem; }
-  .entry .tag { color: var(--muted); font-size: 0.8rem; }
+  .entry li::marker { color: var(--faint); }
+  .entry .tag {
+    display: inline-block; color: var(--muted); font-size: 0.72rem;
+    background: var(--tag-bg); padding: 0.1rem 0.5rem; border-radius: 0.25rem;
+    margin-bottom: 0.3rem;
+  }
+  .entry .meta { font-size: 0.82rem; color: var(--muted); }
+  .entry .meta a { color: var(--ink); }
 
-  .skills p { margin: 0 0 0.6rem; }
+  .skills p { margin: 0 0 0.7rem; }
+  .skills p:last-child { margin-bottom: 0; }
   .skills strong { font-weight: 600; }
 
   footer { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.8rem; }
@@ -113,6 +146,13 @@
     <a href="mailto:pradeep@exvillager.xyz">email</a>
   </p>
 
+  <section class="skills">
+    <h2>skills</h2>
+    <p><strong>web &amp; backend —</strong> Go, TypeScript, JavaScript, Node.js, Bun.js, Python, React, Next.js, SQL, MongoDB, REST APIs, Docker, AWS, Git, Tailwind CSS</p>
+    <p><strong>mobile —</strong> React Native, Expo</p>
+    <p><strong>design —</strong> scalability, API design, caching, microservices, low-level internals</p>
+  </section>
+
   <section>
     <h2>experience</h2>
     <div class="entry">
@@ -142,74 +182,6 @@
   </section>
 
   <section>
-    <h2>projects</h2>
-    <div class="entry">
-      <div class="when">framework</div>
-      <div>
-        <h3>Diesel.js</h3>
-        <p>a simple, lightweight web framework built on Web Standards. Bun.js, TypeScript.</p>
-        <p><a href="https://github.com/exvillager/diesel">github</a> · <a href="https://diesel.exvillager.xyz">live</a></p>
-      </div>
-    </div>
-    <div class="entry">
-      <div class="when">router</div>
-      <div>
-        <h3>peepal-router</h3>
-        <p>a fast, minimal trie-based HTTP router for Node.js. TypeScript.</p>
-        <p><a href="https://github.com/libsib/peepal-router">github</a></p>
-      </div>
-    </div>
-    <div class="entry">
-      <div class="when">app</div>
-      <div>
-        <h3>OpenFile</h3>
-        <p>encrypted file receiver — generate temporary links for anyone to send files anonymously. Bun.js, React, SQL.</p>
-        <p><a href="https://github.com/exvillager/openfile.in">github</a> · <a href="https://openfile.exvillager.xyz">live</a></p>
-      </div>
-    </div>
-    <div class="entry">
-      <div class="when">app</div>
-      <div>
-        <h3>DevTube</h3>
-        <p>a video-sharing platform to upload, watch, and interact with videos. React, Express.js, MongoDB, JWT, Cloudinary.</p>
-        <p><a href="https://github.com/exvillager/devtube">github</a> · <a href="https://devtube.exvillager.xyz">live</a></p>
-      </div>
-    </div>
-    <div class="entry">
-      <div class="when">tooling</div>
-      <div>
-        <h3>ex-router</h3>
-        <p>npm package for file-based routing in backend apps, similar to Next.js / Nuxt.js.</p>
-        <p><a href="https://github.com/exvillager/ex-router">github</a></p>
-      </div>
-    </div>
-    <div class="entry">
-      <div class="when">go</div>
-      <div>
-        <h3>nanoserve</h3>
-        <p>a lightweight HTTP router written in Go with built-in middleware.</p>
-        <p><a href="https://github.com/exvillager/nanoserve">github</a></p>
-      </div>
-    </div>
-    <div class="entry">
-      <div class="when">cli</div>
-      <div>
-        <h3>PingFile</h3>
-        <p>a CLI that runs API requests from JSON, YAML, or PKFILE configs to automate API testing from one command.</p>
-        <p><a href="https://github.com/exvillager/pingfile">github</a></p>
-      </div>
-    </div>
-    <div class="entry">
-      <div class="when">cli</div>
-      <div>
-        <h3>envy</h3>
-        <p>securely store and sync .env files across machines using Cloudflare R2. Go, encryption.</p>
-        <p><a href="https://github.com/exvillager/envy">github</a></p>
-      </div>
-    </div>
-  </section>
-
-  <section>
     <h2>open source</h2>
     <div class="entry">
       <div class="when">cpeak</div>
@@ -229,11 +201,72 @@
     </div>
   </section>
 
-  <section class="skills">
-    <h2>skills</h2>
-    <p><strong>web &amp; backend —</strong> Go, TypeScript, JavaScript, Node.js, Bun.js, Python, React, Next.js, SQL, MongoDB, REST APIs, Docker, AWS, Git, Tailwind CSS</p>
-    <p><strong>mobile —</strong> React Native, Expo</p>
-    <p><strong>design —</strong> scalability, API design, caching, microservices, low-level internals</p>
+  <section>
+    <h2>projects</h2>
+    <div class="entry">
+      <div class="when">framework</div>
+      <div>
+        <h3>Diesel.js</h3>
+        <p>a simple, lightweight web framework built on Web Standards. Bun.js, TypeScript.</p>
+        <p class="meta"><a href="https://github.com/exvillager/diesel">github</a> · <a href="https://diesel.exvillager.xyz">live</a></p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when">router</div>
+      <div>
+        <h3>peepal-router</h3>
+        <p>a fast, minimal trie-based HTTP router for Node.js. TypeScript.</p>
+        <p class="meta"><a href="https://github.com/libsib/peepal-router">github</a></p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when">app</div>
+      <div>
+        <h3>OpenFile</h3>
+        <p>encrypted file receiver — generate temporary links for anyone to send files anonymously. Bun.js, React, SQL.</p>
+        <p class="meta"><a href="https://github.com/exvillager/openfile.in">github</a> · <a href="https://openfile.exvillager.xyz">live</a></p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when">app</div>
+      <div>
+        <h3>DevTube</h3>
+        <p>a video-sharing platform to upload, watch, and interact with videos. React, Express.js, MongoDB, JWT, Cloudinary.</p>
+        <p class="meta"><a href="https://github.com/exvillager/devtube">github</a> · <a href="https://devtube.exvillager.xyz">live</a></p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when">tooling</div>
+      <div>
+        <h3>ex-router</h3>
+        <p>npm package for file-based routing in backend apps, similar to Next.js / Nuxt.js.</p>
+        <p class="meta"><a href="https://github.com/exvillager/ex-router">github</a></p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when">go</div>
+      <div>
+        <h3>nanoserve</h3>
+        <p>a lightweight HTTP router written in Go with built-in middleware.</p>
+        <p class="meta"><a href="https://github.com/exvillager/nanoserve">github</a></p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when">cli</div>
+      <div>
+        <h3>PingFile</h3>
+        <p>a CLI that runs API requests from JSON, YAML, or PKFILE configs to automate API testing from one command.</p>
+        <p class="meta"><a href="https://github.com/exvillager/pingfile">github</a></p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when">cli</div>
+      <div>
+        <h3>envy</h3>
+        <p>securely store and sync .env files across machines using Cloudflare R2. Go, encryption.</p>
+        <p class="meta"><a href="https://github.com/exvillager/envy">github</a></p>
+      </div>
+    </div>
   </section>
 
   <section>
